@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "497899011174",
+    "firebase_url": "https://amit-fbdee-default-rtdb.firebaseio.com",
+    "project_id": "amit-fbdee",
+    "storage_bucket": "amit-fbdee.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:497899011174:android:e0050ff91710a7967981a7",
+        "android_client_info": {
+          "package_name": "com.example.donation"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDgnq-_LHHz4PI2Kzbub4Q-ru1Y_3ZJAjk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:497899011174:android:171ff2c4f27ec7df7981a7",
+        "android_client_info": {
+          "package_name": "com.example.firebase"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDgnq-_LHHz4PI2Kzbub4Q-ru1Y_3ZJAjk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:497899011174:android:4d8edb6a2378dc8d7981a7",
+        "android_client_info": {
+          "package_name": "com.example.firebase_amit"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDgnq-_LHHz4PI2Kzbub4Q-ru1Y_3ZJAjk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
