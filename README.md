@@ -1,20 +1,10 @@
 
 
 # charity clothes
-![photo1698660520](https://github.com/taherelzoghby/charity-clothes/assets/77517566/254b8b8c-50c7-4b4f-a87c-0ec26461d1e2)
-![photo1698660520 (1)](https://github.com/taherelzoghby/charity-clothes/assets/77517566/9f56505d-d9f1-43a7-a732-60e1207692aa)
-![photo1698660520 (2)](https://github.com/taherelzoghby/charity-clothes/assets/77517566/8efbb2d0-5338-4088-9d52-335f645966c5)
-![photo1698660520 (3)](https://github.com/taherelzoghby/charity-clothes/assets/77517566/a4b5e525-f378-4221-b4c0-e19a7239ae78)
-![photo1698660517](https://github.com/taherelzoghby/charity-clothes/assets/77517566/49da366a-cc28-418f-aeb2-5396f5b59a2a)
-![photo1698660517 (1)](https://github.com/taherelzoghby/charity-clothes/assets/77517566/fdb8f8b2-1d92-4e6c-afbf-276794d7c636)
-![photo1698660517 (2)](https://github.com/taherelzoghby/charity-clothes/assets/77517566/8a0d4147-c7d1-46b2-83f1-d14faffd2fc5)
-![photo1698660517 (3)](https://github.com/taherelzoghby/charity-clothes/assets/77517566/a38707c1-ed89-48de-bd73-d9c31f5d176e)
-![photo1698660517 (4)](https://github.com/taherelzoghby/charity-clothes/assets/77517566/603901ae-4d29-4509-beb8-532c7694d0dd)
-![photo1698660517 (5)](https://github.com/taherelzoghby/charity-clothes/assets/77517566/d2ae9bc5-13ac-4c44-bc3c-73b5bf1accc1)
-![photo1698660517 (6)](https://github.com/taherelzoghby/charity-clothes/assets/77517566/23fbae7a-cb98-4f10-8e6b-b2ed37e97ce3)
-![photo1698660517 (7)](https://github.com/taherelzoghby/charity-clothes/assets/77517566/beb0cc3f-c772-4a59-88bf-c45cf1593527)
-![photo1698660517 (8)](https://github.com/taherelzoghby/charity-clothes/assets/77517566/03669d19-54a1-48bf-9dbb-641b8b89be75)
-![photo1698660517 (9)](https://github.com/taherelzoghby/charity-clothes/assets/77517566/a9ffc167-df2a-453f-98ce-035b806d0aa0)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="images_readmi/1.jpeg">
+  
+</picture>
 
 #### We are designing this Mobile app for donating unwanted old clothes. To use the app, users simply snap a photo of the item they would like to give away and then answer a few short questions. The app will then match the item with the appropriate charity and reach out to the user to schedule a pick-up time.
 
