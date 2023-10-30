@@ -67,11 +67,12 @@ class LoginController extends GetxController {
           },
         );
       } catch (error) {
+
+        isLoading.value = false;
         OverlayHelper.showWarningToast(
           Get.overlayContext!,
           StringsEn.someThingOccur.tr,
         );
-        isLoading.value = false;
       }
     }
   }
@@ -101,12 +102,13 @@ class LoginController extends GetxController {
         },
       );
     } catch (error) {
+
+      isLoadingOtp.value = false;
       OverlayHelper.showWarningToast(
         Get.overlayContext!,
         StringsEn.someThingOccur.tr,
       );
 
-      isLoadingOtp.value = false;
     }
   }
 }
