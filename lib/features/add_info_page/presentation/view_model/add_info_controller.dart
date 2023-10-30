@@ -146,7 +146,7 @@ class AddInfoController extends GetxController {
         await totalAddressDetails();
         OverlayHelper.showSuccessToast(
           Get.overlayContext!,
-          StringsEn.confirmed.tr,
+          StringsEn.confirmAddress.tr,
         );
         Get.back();
       } catch (e) {

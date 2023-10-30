@@ -104,7 +104,7 @@ abstract class StringsAr {
   static const String apartmentNumber = 'رقم الشقه';
   static const String specialMarque = 'علامه مميزه';
   static const String addresSDetail = 'ادخل العنوان بالتفصيل';
-  static const String confirmAddress = 'تأكيد العنوان';
+  static const String confirmAddress = ' تأكيد العنوان';
   static const String confirmed = "تم التسليم";
   static const String validator = "غير متاح";
   static const String track = "تتبع";
@@ -151,7 +151,7 @@ abstract class StringsAr {
   static const String enterYourPosition='من فضلك، أدخل موقعك!';
   static const String thankYouForDonation='شكرا لك على تبرعك';
   static const String providedNumIsNotValid='رقم الهاتف  غير صالح.';
-  static const String success="بنجاح";
+  static const String success="تم بنجاح";
   static const String error="خطأ";
   static const String warning="تحذير";
   static const String information="معلومة";
