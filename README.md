@@ -6,9 +6,9 @@
 Flutter<br>
 Firebase<br>
 ## key Features
-State management: Getx,Mvvm,repository patterns .
-Backend: Firebase.
-Local database: sqlite,shared prefernces. 
+State management: Getx,Mvvm,repository patterns.<br>
+Backend: Firebase.<br>
+Local database: sqlite,shared prefernces.<br> 
 
 ## Features
 A charity clothes app can offer various features to facilitate the process of donating clothes for charitable purposes. Here are some common features you might find in such an app:
