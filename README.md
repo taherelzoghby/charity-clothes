@@ -1,7 +1,7 @@
 
 
 # charity clothes
-![1](https://github.com/taherelzoghby/charity-clothes/assets/77517566/ef4d21ac-be83-4537-a40d-3be7c94dff74)
+![1](https://github.com/taherelzoghby/charity-clothes/assets/77517566/ef4d21ac-be83-4537-a40d-3be7c94dff74 | width=100)
 ![14](https://github.com/taherelzoghby/charity-clothes/assets/77517566/194739cb-1f88-4607-9272-f1e899ca7546)
 ![13](https://github.com/taherelzoghby/charity-clothes/assets/77517566/550b83bf-a944-453e-b058-595570cee5f9)
 ![12](https://github.com/taherelzoghby/charity-clothes/assets/77517566/529659ef-1dc8-4ef5-aef4-8c22dd90635c)
