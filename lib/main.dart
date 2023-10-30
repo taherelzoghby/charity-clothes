@@ -1,4 +1,3 @@
-
 import 'package:donation/core/consts/strings.dart';
 import 'package:donation/core/helper/cache_helper.dart';
 import 'package:donation/core/services/service_locator.dart';
@@ -13,14 +12,15 @@ import 'core/consts/routesPage.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
-  ///init firebase
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
-
+  await Future.wait([
+    ///init firebase
+    Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    ),
   ///init cacheHelper(shared preferences)
-  await CacheHelper.init();
+   CacheHelper.init(),
+  ] as Iterable<Future>);
+
 
   ///setup service locator (get it)
   setupServiceLocator();
@@ -45,7 +45,7 @@ class MyApp extends StatelessWidget {
           translations: Translate(),
           debugShowCheckedModeBanner: false,
           theme: ThemeData(useMaterial3: true),
-          getPages:routes,
+          getPages: routes,
         );
       },
     );

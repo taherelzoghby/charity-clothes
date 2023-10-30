@@ -1,6 +1,5 @@
 import 'package:donation/core/consts/strings.dart';
 import 'package:donation/core/consts/style.dart';
-import 'package:donation/core/services/firebase/firestore/firestore.dart';
 import 'package:donation/core/services/service_locator.dart';
 import 'package:donation/core/widgets/dialog.dart';
 import 'package:donation/features/auth_donate_clothes/data/auth_repo/auth_repo_implementation.dart';
