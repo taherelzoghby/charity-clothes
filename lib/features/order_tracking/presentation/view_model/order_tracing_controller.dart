@@ -1,4 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first, avoid_print
+import 'package:donation/core/consts/strings.dart';
 import 'package:donation/core/helper/overlay_helper.dart';
 import 'package:donation/core/models/item_model.dart';
 import 'package:donation/features/order_tracking/data/repo/order_tracking_repo.dart';
@@ -54,14 +55,14 @@ class OrderTrackingController extends GetxController {
       orderTrackingRepo.deleteProduct(id: id);
       OverlayHelper.showSuccessToast(
         Get.overlayContext!,
-        'Successful deleted',
+        StringsEn.successfulDeleted.tr,
       );
       getData();
       Get.back();
     } catch (e) {
       OverlayHelper.showWarningToast(
         Get.overlayContext!,
-        'Failed deleted',
+        StringsEn.someThingOccur.tr,
       );
     }
   }

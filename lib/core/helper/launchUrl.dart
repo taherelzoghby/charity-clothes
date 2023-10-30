@@ -1,3 +1,4 @@
+import 'package:donation/core/consts/strings.dart';
 import 'package:donation/core/helper/overlay_helper.dart';
 import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -8,7 +9,7 @@ Future<void> launchUr({required String url}) async {
         mode: LaunchMode.externalApplication)) {
       OverlayHelper.showWarningToast(
         Get.context!,
-        'Cannot launch!',
+        StringsEn.someThingOccur.tr,
       );
     }
   } else if (url.contains('@')) {
@@ -16,7 +17,7 @@ Future<void> launchUr({required String url}) async {
         mode: LaunchMode.externalApplication)) {
       OverlayHelper.showWarningToast(
         Get.context!,
-        'Cannot launch!',
+        StringsEn.someThingOccur.tr,
       );
     }
   } else {
@@ -24,7 +25,7 @@ Future<void> launchUr({required String url}) async {
         mode: LaunchMode.externalApplication)) {
       OverlayHelper.showWarningToast(
         Get.context!,
-        'Cannot launch!',
+        StringsEn.someThingOccur.tr,
       );
     }
   }

@@ -63,7 +63,6 @@ class OtpController extends GetxController {
         } else {
           ///verify otp
           await authRepo.verifyOtp(otp: code!, verId: verId);
-          print("id : $verId");
 
           ///save data
           await CacheHelper.saveData(key: StringsEn.id, value: verId);
@@ -76,7 +75,7 @@ class OtpController extends GetxController {
       } catch (e) {
         OverlayHelper.showWarningToast(
           Get.overlayContext!,
-          'error occurred',
+          StringsEn.someThingOccur.tr,
         );
       }
       isLoading.value = false;

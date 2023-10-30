@@ -6,7 +6,6 @@ import 'package:donation/core/helper/overlay_helper.dart';
 import 'package:donation/core/models/address.dart';
 import 'package:donation/core/models/item_model.dart';
 import 'package:donation/features/add_info_page/data/repo/add_info_repo.dart';
-import 'package:donation/features/add_info_page/data/repo/add_info_repo_implementation.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
@@ -140,20 +139,20 @@ class AddInfoController extends GetxController {
         addressDetails.isEmpty) {
       OverlayHelper.showWarningToast(
         Get.overlayContext!,
-        'Please, Enter the correct information!',
+        StringsEn.enterTheCorrectInfo.tr,
       );
     } else {
       try {
         await totalAddressDetails();
         OverlayHelper.showSuccessToast(
           Get.overlayContext!,
-          StringsEn.confirmed,
+          StringsEn.confirmed.tr,
         );
         Get.back();
       } catch (e) {
         OverlayHelper.showWarningToast(
           Get.overlayContext!,
-          'Please ,Enter get your position',
+          StringsEn.enterYourPosition.tr,
         );
       }
     }
@@ -203,7 +202,7 @@ class AddInfoController extends GetxController {
     } catch (e) {
       OverlayHelper.showWarningToast(
         Get.overlayContext!,
-        e.toString(),
+        StringsEn.someThingOccur.tr,
       );
     }
     update();
@@ -262,7 +261,7 @@ class AddInfoController extends GetxController {
           addressDetails.isEmpty) {
         OverlayHelper.showWarningToast(
           Get.overlayContext!,
-          'Please ,Enter the correct information',
+          StringsEn.enterTheCorrectInfo.tr,
         );
       } else {
         isLoadingSubmitted.value = true;
@@ -290,13 +289,13 @@ class AddInfoController extends GetxController {
           ///thank you for donate
           OverlayHelper.showSuccessToast(
             Get.overlayContext!,
-            'Thank you for your donation',
+            StringsEn.thankYouForDonation.tr,
           );
           Get.offAllNamed(bottomNavPath);
         } catch (e) {
           OverlayHelper.showWarningToast(
             Get.overlayContext!,
-            e.toString(),
+            StringsEn.someThingOccur.tr,
           );
         }
         isLoadingSubmitted.value = false;

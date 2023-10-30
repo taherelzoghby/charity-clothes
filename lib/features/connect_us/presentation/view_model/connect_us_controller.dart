@@ -30,8 +30,6 @@ class ConnectUsController extends GetxController {
   final isLoadingDialogOtp = false.obs;
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   StreamController<ErrorAnimationType>? errorController;
-
-  //TextEditingController textEditingController = TextEditingController();
   String? code;
 
   ///on changed otp
@@ -57,6 +55,18 @@ class ConnectUsController extends GetxController {
     update();
   }
 
+  ///remove cache
+  removeCache() async {
+    ///remove id
+    await CacheHelper.removeData(key: StringsEn.id);
+
+    ///remove name
+    await CacheHelper.removeData(key: StringsEn.name);
+
+    ///remove phone number
+    await CacheHelper.removeData(key: StringsEn.phoneNumber);
+  }
+
   ///check if have account or not?
   chechIfHaveAccount() {
     CacheHelper.getData(key: StringsEn.id) != null
@@ -67,20 +77,20 @@ class ConnectUsController extends GetxController {
   ///ready to delete account
   readyToDeleteAccount() {
     customDialog(
-      title: 'Do you Want To Delete The Account?',
+      title: StringsEn.doYouWantDeleteAcccount.tr,
       onConfirm: () => receiveOtpDialog(),
       onCancel: () => Get.back(),
-      textConfirm: 'Ok',
+      textConfirm: StringsEn.ok.tr,
     );
   }
 
   ///ready to sign out
   readyToSignOut() {
     customDialog(
-      title: 'Do you Want To Sign out?',
+      title: StringsEn.doYouWantSignOut.tr,
       onConfirm: () => signOutWithPhone(),
       onCancel: () => Get.back(),
-      textConfirm: 'Ok',
+      textConfirm: StringsEn.ok.tr,
     );
   }
 
@@ -90,15 +100,14 @@ class ConnectUsController extends GetxController {
       context: Get.context!,
       builder: (BuildContext context) {
         return AlertDialogWidget(
-          contentText:
-              'We need to verify your number first.You will receive the OTP once you click Submit',
+          contentText: StringsEn.weNeedToVerifyYourNumberFirst.tr,
           confirmFunction: () => deleteMobilePhone(),
           declineFunction: () {
             Get.back();
             Get.back();
           },
-          confirmText: 'Submit',
-          cancelText: 'cancel',
+          confirmText: StringsEn.submit.tr,
+          cancelText: StringsEn.cancel.tr,
         );
       },
     );
@@ -111,6 +120,7 @@ class ConnectUsController extends GetxController {
       await authConnectUsRepo.deleteAccountWithPhone(
         codeSent: (String verId, [int? forceCodeResend]) async {
           Get.back();
+          isLoading.value = false;
           return showDialog(
             context: Get.context!,
             builder: (BuildContext context) {
@@ -124,7 +134,11 @@ class ConnectUsController extends GetxController {
         },
       );
     } catch (e) {
-      OverlayHelper.showWarningToast(Get.overlayContext!, e.toString());
+      isLoading.value = false;
+      OverlayHelper.showWarningToast(
+        Get.overlayContext!,
+        StringsEn.someThingOccur.tr,
+      );
     }
   }
 
@@ -157,13 +171,13 @@ class ConnectUsController extends GetxController {
           Get.offAllNamed(bottomNavPath);
           OverlayHelper.showSuccessToast(
             Get.overlayContext!,
-            'Account Deleted Successful',
+            StringsEn.accountDeletedSuccessfully.tr,
           );
         }
       } catch (e) {
         OverlayHelper.showWarningToast(
           Get.overlayContext!,
-          e.toString(),
+          StringsEn.someThingOccur.tr,
         );
       }
       isLoadingDialogOtp.value = false;
@@ -174,12 +188,13 @@ class ConnectUsController extends GetxController {
   signOutWithPhone() async {
     try {
       await authConnectUsRepo.signOutWithPhone();
+
       ///remove all cache (id-phone-name)
       removeCache();
       chechIfHaveAccount();
       OverlayHelper.showSuccessToast(
         Get.overlayContext!,
-        'Signout success',
+        StringsEn.signoutSuccess.tr,
       );
 
       ///navigate to otp screen
@@ -187,21 +202,9 @@ class ConnectUsController extends GetxController {
     } catch (e) {
       OverlayHelper.showWarningToast(
         Get.overlayContext!,
-        'something occured!',
+        StringsEn.someThingOccur.tr,
       );
     }
-  }
-
-  ///remove cache
-  removeCache() async {
-    ///remove id
-    await CacheHelper.removeData(key: StringsEn.id);
-
-    ///remove name
-    await CacheHelper.removeData(key: StringsEn.name);
-
-    ///remove phone number
-    await CacheHelper.removeData(key: StringsEn.phoneNumber);
   }
 
   @override
@@ -212,7 +215,7 @@ class ConnectUsController extends GetxController {
 
   @override
   void onClose() {
-    //textEditingController.dispose();
+    errorController!.close();
     super.onClose();
   }
 }

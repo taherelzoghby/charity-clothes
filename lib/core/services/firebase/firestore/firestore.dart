@@ -12,15 +12,6 @@ class FireStore {
   FirebaseFirestore firestore = FirebaseFirestore.instance;
   FireStore({required this.auth});
 
-  ///add user to firebase
-  addUser({required UserModel user, required String time}) async {
-    try {
-      await firestore.collection('users').doc(time).set(user.toJson());
-    } catch (e) {
-      print(e);
-    }
-  }
-
   ///add data to firebase
   addToFireStore({required ItemModel model}) async {
     try {

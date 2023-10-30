@@ -51,5 +51,22 @@ Map<String, String> en = {
   StringsEn.signOut: StringsEn.signOut,
   StringsEn.questionLang: StringsEn.questionLang,
   StringsEn.no: StringsEn.no,
-  StringsEn.yes: StringsEn.yes
+  StringsEn.yes: StringsEn.yes,
+  StringsEn.doYouWantDeleteAcccount: StringsEn.doYouWantDeleteAcccount,
+  StringsEn.ok: StringsEn.ok,
+  StringsEn.doYouWantSignOut: StringsEn.doYouWantSignOut,
+  StringsEn.weNeedToVerifyYourNumberFirst:
+      StringsEn.weNeedToVerifyYourNumberFirst,
+  StringsEn.someThingOccur: StringsEn.someThingOccur,
+  StringsEn.accountDeletedSuccessfully: StringsEn.accountDeletedSuccessfully,
+  StringsEn.signoutSuccess: StringsEn.signoutSuccess,
+  StringsEn.successfulDeleted: StringsEn.successfulDeleted,
+  StringsEn.enterTheCorrectInfo: StringsEn.enterTheCorrectInfo,
+  StringsEn.enterYourPosition: StringsEn.enterYourPosition,
+  StringsEn.thankYouForDonation: StringsEn.thankYouForDonation,
+  StringsEn.providedNumIsNotValid: StringsEn.providedNumIsNotValid,
+  StringsEn.success: StringsEn.success,
+  StringsEn.error: StringsEn.error,
+  StringsEn.warning: StringsEn.warning,
+  StringsEn.information: StringsEn.information,
 };

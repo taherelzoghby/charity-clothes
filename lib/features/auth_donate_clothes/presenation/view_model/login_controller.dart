@@ -1,4 +1,3 @@
-import 'dart:async';
 
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:donation/core/helper/overlay_helper.dart';
@@ -28,7 +27,6 @@ class LoginController extends GetxController {
   ///selected country
   selectedCo(CountryCode c) {
     selectedCountry = c;
-    print(selectedCountry!.dialCode);
     update();
   }
 
@@ -68,12 +66,10 @@ class LoginController extends GetxController {
             isLoading.value = false;
           },
         );
-
-        print("sign in with phone success");
       } catch (error) {
         OverlayHelper.showWarningToast(
           Get.overlayContext!,
-          error.toString(),
+          StringsEn.someThingOccur.tr,
         );
         isLoading.value = false;
       }
@@ -107,7 +103,7 @@ class LoginController extends GetxController {
     } catch (error) {
       OverlayHelper.showWarningToast(
         Get.overlayContext!,
-        error.toString(),
+        StringsEn.someThingOccur.tr,
       );
 
       isLoadingOtp.value = false;

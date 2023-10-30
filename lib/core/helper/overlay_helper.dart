@@ -1,6 +1,8 @@
+import 'package:donation/core/consts/strings.dart';
 import 'package:donation/core/consts/style.dart';
 import 'package:donation/core/helper/snack_bar_helper.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class OverlayHelper {
   static final Map<int, OverlayEntry?> lastOverlays = {};
@@ -15,7 +17,7 @@ class OverlayHelper {
   static void showSuccessToast(BuildContext context, String text,
       {int seconds = 10}) {
     showSnackBar(
-      "Success", text,
+      StringsEn.success.tr, text,
       context: context,
       color: successColor,
       //iconSVG: AssetImages.success,
@@ -40,7 +42,7 @@ class OverlayHelper {
   static void showErrorToast(BuildContext context, String text,
       {int seconds = 10}) {
     showSnackBar(
-      "Error", text,
+      StringsEn.error.tr, text,
       context: context,
       color: errorColor,
       //iconSVG: AssetImages.errorIcon,
@@ -51,7 +53,7 @@ class OverlayHelper {
   static void showInfoToast(BuildContext context, String text,
       {int seconds = 10}) {
     showSnackBar(
-      "Information", text,
+      StringsEn.information.tr, text,
       context: context,
       color: infoColor,
       //iconSVG: AssetImages.infoIcon,
@@ -62,7 +64,7 @@ class OverlayHelper {
   static void showWarningToast(BuildContext context, String text,
       {int seconds = 10}) {
     showSnackBar(
-      "Warning", text,
+      StringsEn.warning.tr, text,
       context: context,
       color: warningColor,
       //iconSVG: AssetImages.warning,

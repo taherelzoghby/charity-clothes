@@ -33,7 +33,7 @@ class SignInPhone {
           if (e.code == 'invalid-phone-number') {
             OverlayHelper.showWarningToast(
               Get.overlayContext!,
-              'The provided phone number is not valid.',
+              StringsEn.providedNumIsNotValid.tr,
             );
           } else {
             OverlayHelper.showWarningToast(Get.overlayContext!, e.message!);
@@ -43,7 +43,10 @@ class SignInPhone {
         codeAutoRetrievalTimeout: (String verificationId) {},
       );
     } catch (e) {
-      OverlayHelper.showWarningToast(Get.overlayContext!, e.toString());
+      OverlayHelper.showWarningToast(
+        Get.overlayContext!,
+        StringsEn.someThingOccur.tr,
+      );
     }
   }
 

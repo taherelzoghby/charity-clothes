@@ -42,7 +42,10 @@ class DeleteAccount {
         codeAutoRetrievalTimeout: (String verificationId) {},
       );
     } catch (e) {
-      OverlayHelper.showWarningToast(Get.overlayContext!, e.toString());
+      OverlayHelper.showWarningToast(
+        Get.overlayContext!,
+        StringsEn.someThingOccur.tr,
+      );
     }
   }
 }

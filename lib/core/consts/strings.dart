@@ -66,6 +66,22 @@ abstract class StringsEn {
       'https://twitter.com/Ta7er2?t=jYG03ucx0EGWtZzNls1O-g&s=09';
   static const String no = 'No';
   static const String yes = 'Yes';
+  static const String doYouWantDeleteAcccount ='Do you Want To Delete The Account?';
+  static const String ok ='sure';
+  static const String doYouWantSignOut ='Do you Want To Sign out?';
+  static const String weNeedToVerifyYourNumberFirst ='We need to verify your number first.You will receive the OTP once you click Submit';
+  static const String someThingOccur='something occurred';
+  static const String accountDeletedSuccessfully='Account Deleted Successful';
+  static const String signoutSuccess='Signout Success';
+  static const String successfulDeleted='Successful deleted';
+  static const String enterTheCorrectInfo='Please, Enter the correct information!';
+  static const String enterYourPosition='Please ,Enter your position!';
+  static const String thankYouForDonation='Thank you for your donation';
+  static const String providedNumIsNotValid='The provided phone number is not valid.';
+  static const String success="Success";
+  static const String error="Error";
+  static const String warning="Warning";
+  static const String information="Information";
 }
 
 ///strings by arabic
@@ -123,4 +139,21 @@ abstract class StringsAr {
       'رؤيتنا مبنية على رضاء المتبرعين الأعزاء وتحسين تجربتهم من خلال توفير أفضل وسيلة للتواصل بكل سهولة وعلى مستوى المملكة الأردنية الهاشمية فقط، لذلك يركز كل ما نخطط له في خططنا الإستراتيجية المستقبلية على تحقيق هذا الهدف.';
   static const String plan =
       'ولأن الملابس الخيرية هي للشعب وللناس، فإننا نسعى من خلال رؤيتنا وأهدافنا الجديدة إلى المساهمة بشكل كبير في رفع مستوى المعيشة في المجتمع والمنطقة. إيماناً منا بأن استقرار عملنا اليوم هو نمو وازدهار المنطقة غداً. نحن حريصون على أن نكون الاسم الذي يمكنك الاعتماد عليه دائمًا';
+  static const String doYouWantDeleteAcccount ='هل تريد ازالة الحساب الخاص بك؟';
+  static const String ok ='بالتأكيد';
+  static const String doYouWantSignOut ='هل تريد تسجيل الخروج؟';
+  static const String weNeedToVerifyYourNumberFirst ='نحتاج إلى التحقق من رقمك أولاً. سوف تتلقى كلمة المرور لمرة واحدة (OTP) بمجرد النقر فوق "إرسال".';
+  static const String someThingOccur='حدث خطأ';
+  static const String accountDeletedSuccessfully='تم ازالة الحساب';
+  static const String signoutSuccess='تم تسجيل الخروج';
+  static const String successfulDeleted='تم الازاله بنجاح';
+  static const String enterTheCorrectInfo='من فضلك، أدخل المعلومات الصحيحة!';
+  static const String enterYourPosition='من فضلك، أدخل موقعك!';
+  static const String thankYouForDonation='شكرا لك على تبرعك';
+  static const String providedNumIsNotValid='رقم الهاتف  غير صالح.';
+  static const String success="بنجاح";
+  static const String error="خطأ";
+  static const String warning="تحذير";
+  static const String information="معلومة";
+
 }
