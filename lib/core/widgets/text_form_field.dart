@@ -38,7 +38,7 @@ class CustomTextFormField extends StatelessWidget {
       cursorColor: AppConsts.mainColor,
       validator: (value) {
         if (value!.isEmpty) {
-          return 'Please enter your $hint';
+          return '${StringsEn.pleaseEnterUour.tr} $hint';
         }
         return null;
       },

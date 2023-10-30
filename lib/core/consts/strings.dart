@@ -82,6 +82,7 @@ abstract class StringsEn {
   static const String error="Error";
   static const String warning="Warning";
   static const String information="Information";
+  static const String pleaseEnterUour='Please enter your';
 }
 
 ///strings by arabic
@@ -155,5 +156,6 @@ abstract class StringsAr {
   static const String error="خطأ";
   static const String warning="تحذير";
   static const String information="معلومة";
+  static const String pleaseEnterUour='من فضلك اخل ';
 
 }

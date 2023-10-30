@@ -69,4 +69,5 @@ Map<String, String> ar = {
   StringsEn.error: StringsAr.error,
   StringsEn.warning: StringsAr.warning,
   StringsEn.information: StringsAr.information,
+  StringsEn. pleaseEnterUour:StringsAr. pleaseEnterUour,
 };
