@@ -38,22 +38,6 @@ class ConnectUsController extends GetxController {
   ///on submitted otp
   onSubmttedOtp(String value) => code = value;
 
-  String currentLang = CacheHelper.getData(key: StringsEn.language) == null ||
-          CacheHelper.getData(key: StringsEn.language) == 'en'
-      ? 'en'
-      : 'ar';
-
-  ///change language
-  changeLanguage({required String code}) async {
-    currentLang = code;
-    Locale locale = Locale(code);
-    Get.updateLocale(locale);
-    await CacheHelper.saveData(key: StringsEn.language, value: code);
-
-    ///back
-    Get.offAllNamed(bottomNavPath);
-    update();
-  }
 
   ///remove cache
   removeCache() async {

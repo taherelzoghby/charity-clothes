@@ -1,5 +1,6 @@
 import 'package:donation/core/consts/strings.dart';
 import 'package:donation/core/consts/style.dart';
+import 'package:donation/core/services/localiziation_services/localization_services.dart';
 import 'package:donation/core/services/service_locator.dart';
 import 'package:donation/core/widgets/dialog.dart';
 import 'package:donation/features/auth_donate_clothes/data/auth_repo/auth_repo_implementation.dart';
@@ -12,7 +13,7 @@ import 'package:get/get.dart';
 
 import '../../../../core/consts/assets.dart';
 
-class ConnectUsView extends StatelessWidget {
+class ConnectUsView extends GetView<LocalizationsServices> {
   const ConnectUsView({super.key});
 
   @override
@@ -23,6 +24,7 @@ class ConnectUsView extends StatelessWidget {
         authRepo: getIt.get<AuthRepoImplementation>(),
       ),
     );
+    final cont=Get.find<LocalizationsServices>();
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
@@ -34,60 +36,55 @@ class ConnectUsView extends StatelessWidget {
         centerTitle: true,
         actions: [
           ///settings
-          GetBuilder(
-            init: ConnectUsController(
-              authConnectUsRepo: getIt.get<AuthConnectUsRepoImplementation>(),
-              authRepo: getIt.get<AuthRepoImplementation>(),
-            ),
-            builder: (cont) => PopupMenuButton(
-              position: PopupMenuPosition.under,
-              icon: const Icon(Icons.settings),
-              onSelected: (val) {
-                if (val == 0) {
-                  showDialog(
-                    context: context,
-                    builder: (context) {
-                      return AlertDialogWidget(
-                        contentText: StringsEn.questionLang.tr,
-                        confirmFunction: () {
-                          ///change language
-                          cont.changeLanguage(
-                              code: cont.currentLang == 'ar' ? 'en' : 'ar');
-                        },
-                        declineFunction: () => Get.back(),
-                        confirmText: StringsEn.yes.tr,
-                        cancelText: StringsEn.no.tr,
-                      );
-                    },
-                  );
-                }
-              },
-              itemBuilder: (context) => [
-                PopupMenuItem(
-                  value: 0,
-                  child: Row(
-                    children: [
-                      ///image
-                      SvgPicture.asset(
-                        cont.currentLang == 'ar'
-                            ? AppAssets.us
-                            : AppAssets.egypt,
-                        height: size.height * .02,
-                      ),
-                      SizedBox(width: size.width * .02),
+          PopupMenuButton(
+            position: PopupMenuPosition.under,
+            icon: const Icon(Icons.settings),
+            onSelected: (val) {
+              if (val == 0) {
+                showDialog(
+                  context: context,
+                  builder: (context) {
+                    return AlertDialogWidget(
+                      contentText: StringsEn.questionLang.tr,
+                      confirmFunction: () {
+                        ///change language
+                        cont.changeLocale(
+                          cont.lang.value == 'ar' ? 'en' : 'ar',
+                        );
+                      },
+                      declineFunction: () => Get.back(),
+                      confirmText: StringsEn.yes.tr,
+                      cancelText: StringsEn.no.tr,
+                    );
+                  },
+                );
+              }
+            },
+            itemBuilder: (context) => [
+              PopupMenuItem(
+                value: 0,
+                child: Row(
+                  children: [
+                    ///image
+                    SvgPicture.asset(
+                      cont.lang.value == 'ar'
+                          ? AppAssets.us
+                          : AppAssets.egypt,
+                      height: size.height * .02,
+                    ),
+                    SizedBox(width: size.width * .02),
 
-                      ///english or arabic
-                      Text(
-                        cont.currentLang == 'ar'
-                            ? StringsEn.English.tr
-                            : StringsEn.Arabic.tr,
-                        style: const TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                    ],
-                  ),
+                    ///english or arabic
+                    Text(
+                      cont.lang.value == 'ar'
+                          ? StringsEn.English.tr
+                          : StringsEn.Arabic.tr,
+                      style: const TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                  ],
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ],
       ),
