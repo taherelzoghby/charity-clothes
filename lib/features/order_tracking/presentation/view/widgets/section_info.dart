@@ -16,6 +16,7 @@ class SectionInfo extends StatelessWidget {
     required this.item,
   }) : super(key: key);
   final ItemModel item;
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;

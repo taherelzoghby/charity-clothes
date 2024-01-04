@@ -26,24 +26,27 @@ class ImageWidget extends StatelessWidget {
         height: height,
         width: width,
         decoration: AppConsts.decorationImage,
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(15.sp),
-          child: CachedNetworkImage(
-            imageUrl: image,
-            imageBuilder: (context, imageProvider) => Container(
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: imageProvider,
-                  fit: BoxFit.fill,
+        child: Hero(
+          tag: image,
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(15.sp),
+            child: CachedNetworkImage(
+              imageUrl: image,
+              imageBuilder: (context, imageProvider) => Container(
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: imageProvider,
+                    fit: BoxFit.fill,
+                  ),
                 ),
               ),
-            ),
-            placeholder: (context, url) => const Center(
-              child: CircularProgressIndicator(
-                color: AppConsts.mainColor,
+              placeholder: (context, url) => const Center(
+                child: CircularProgressIndicator(
+                  color: AppConsts.mainColor,
+                ),
               ),
+              errorWidget: (context, url, error) => const Icon(Icons.error),
             ),
-            errorWidget: (context, url, error) => const Icon(Icons.error),
           ),
         ),
       ),

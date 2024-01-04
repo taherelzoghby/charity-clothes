@@ -20,6 +20,7 @@ class ItemTrack extends StatelessWidget {
     required this.item,
   }) : super(key: key);
   final ItemModel item;
+
   @override
   Widget build(BuildContext context) {
     final cont = Get.find<OrderTrackingController>();
@@ -42,6 +43,7 @@ class ItemTrack extends StatelessWidget {
               Row(
                 children: [
                   ///image
+
                   ImageWidget(
                     height: size.height * .15.h,
                     width: size.width * .35.w,

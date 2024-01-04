@@ -9,13 +9,16 @@ class ImageView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String image = Get.arguments;
-    return PhotoView(
-      loadingBuilder: (context, d) => const Center(
-        child:  CircularProgressIndicator(
-          color: AppConsts.mainColor,
+    return Hero(
+      tag: image,
+      child: PhotoView(
+        loadingBuilder: (context, d) => const Center(
+          child: CircularProgressIndicator(
+            color: AppConsts.mainColor,
+          ),
         ),
+        imageProvider: NetworkImage(image),
       ),
-      imageProvider: NetworkImage(image),
     );
   }
 }
