@@ -1,21 +1,20 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:donation/core/consts/route.dart';
 import 'package:donation/core/consts/style.dart';
-import 'package:donation/core/widgets/photo_view.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:photo_view/photo_view.dart';
+
+import 'loading_widget.dart';
 
 class ImageWidget extends StatelessWidget {
   const ImageWidget({
     Key? key,
-    required this.height,
-    required this.width,
+    this.height,
+    this.width,
     required this.image,
   }) : super(key: key);
-  final double height;
-  final double width;
+  final double? height;
+  final double? width;
   final String image;
 
   @override
@@ -29,22 +28,18 @@ class ImageWidget extends StatelessWidget {
         child: Hero(
           tag: image,
           child: ClipRRect(
-            borderRadius: BorderRadius.circular(15.sp),
+            borderRadius: AppConsts.radius15,
             child: CachedNetworkImage(
               imageUrl: image,
               imageBuilder: (context, imageProvider) => Container(
                 decoration: BoxDecoration(
                   image: DecorationImage(
                     image: imageProvider,
-                    fit: BoxFit.fill,
+                    fit: BoxFit.cover,
                   ),
                 ),
               ),
-              placeholder: (context, url) => const Center(
-                child: CircularProgressIndicator(
-                  color: AppConsts.mainColor,
-                ),
-              ),
+              placeholder: (context, url) => const LoadingWidget(),
               errorWidget: (context, url, error) => const Icon(Icons.error),
             ),
           ),

@@ -21,80 +21,82 @@ class SectionInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Padding(
-      padding: EdgeInsets.all(6.sp),
-      child: Container(
-        height: size.height * .21.h,
-        width: size.width.w,
-        decoration: BoxDecoration(
-          color: AppConsts.white,
-          borderRadius: BorderRadius.circular(15.sp),
-          boxShadow: AppConsts.boxShadowsItemTrack,
-        ),
-        child: Padding(
-          padding: EdgeInsets.all(5.sp),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              SizedBox(height: size.height * .01.h),
+      padding: AppConsts.padding8,
+      child: AspectRatio(
+        aspectRatio: AppConsts.aspect16on8,
+        child: Container(
+          decoration: AppConsts.decorationItemTrack,
+          child: Padding(
+            padding: AppConsts.padding8,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                const AspectRatio(aspectRatio: AppConsts.aspect40on1),
 
-              ///info
-              Row(
-                children: [
-                  ///image
-                  ImageWidget(
-                    height: size.height * .125.h,
-                    width: size.width * .3.w,
-                    image: item.imageUrl!,
-                  ),
-                  SizedBox(width: size.width * .01.w),
-
-                  ///info (date-pieces-status)
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                ///info
+                Expanded(
+                  child: Row(
                     children: [
-                      ///date
-                      TileText(
-                        first: StringsEn.date.tr,
-                        second:
-                            "${DateFormat.yMd().format(DateTime.parse(item.date!))} ${item.time!}",
-                        siz: .55,
+                      ///image
+                      Expanded(
+                        flex: 2,
+                        child: ImageWidget(image: item.imageUrl!),
                       ),
-                      SizedBox(height: size.height * .01.h),
+                      SizedBox(width: size.width * .01.w),
 
-                      ///number of pieces
-                      TileText(
-                        first: StringsEn.numberOfPieces.tr,
-                        second: item.pieces!,
-                        siz: .55,
-                      ),
-                      SizedBox(height: size.height * .01.h),
+                      ///info (date-pieces-status)
+                      Expanded(
+                        flex: 3,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            ///date
+                            TileText(
+                              first: StringsEn.date.tr,
+                              second:
+                                  "${DateFormat.yMd().format(DateTime.parse(item.date!))} ${item.time!}",
+                              siz: .55,
+                            ),
+                            SizedBox(height: size.height * .01.h),
 
-                      ///status
-                      Row(
-                        children: [
-                          Text(
-                            '${StringsEn.status.tr} :    ',
-                            style: AppConsts.style14,
-                          ),
-                          Text(
-                            item.status!,
-                            style: AppConsts.style16Green,
-                          ),
-                        ],
+                            ///number of pieces
+                            TileText(
+                              first: StringsEn.numberOfPieces.tr,
+                              second: item.pieces!,
+                              siz: .55,
+                            ),
+                            SizedBox(height: size.height * .01.h),
+
+                            ///status
+                            Row(
+                              children: [
+                                Text(
+                                  '${StringsEn.status.tr} :    ',
+                                  style: AppConsts.style14,
+                                ),
+                                Text(
+                                  item.status!,
+                                  style: AppConsts.style16Green,
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
                     ],
                   ),
-                ],
-              ),
-              SizedBox(height: size.height * .005.h),
-              const Divider(),
+                ),
+                const AspectRatio(aspectRatio: AppConsts.aspect40on1),
+                const Divider(),
 
-              ///messages
-              TileText(
-                first: StringsEn.messeges.tr,
-                second: StringsEn.noMesseges.tr,
-              ),
-            ],
+                ///messages
+                TileText(
+                  first: StringsEn.messeges.tr,
+                  second: StringsEn.noMesseges.tr,
+                ),
+              ],
+            ),
           ),
         ),
       ),

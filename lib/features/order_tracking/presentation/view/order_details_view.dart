@@ -25,7 +25,9 @@ class OrderDetailsView extends StatelessWidget {
         centerTitle: true,
         backgroundColor: AppConsts.grey,
       ),
-      body: const OrderDetailsBody(),
+      body: const SafeArea(
+        child: OrderDetailsBody(),
+      ),
     );
   }
 }

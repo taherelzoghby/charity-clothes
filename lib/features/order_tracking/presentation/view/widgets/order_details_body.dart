@@ -1,4 +1,5 @@
 import 'package:donation/core/consts/strings.dart';
+import 'package:donation/core/consts/style.dart';
 import 'package:donation/core/helper/cache_helper.dart';
 import 'package:donation/core/models/item_model.dart';
 import 'package:donation/core/widgets/tile_text.dart';
@@ -6,21 +7,28 @@ import 'package:donation/features/order_tracking/presentation/view/widgets/secti
 import 'package:donation/features/order_tracking/presentation/view/widgets/section_info.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:get/get.dart';
 
-class OrderDetailsBody extends StatelessWidget {
+class OrderDetailsBody extends StatefulWidget {
   const OrderDetailsBody({super.key});
 
   @override
+  State<OrderDetailsBody> createState() => _OrderDetailsBodyState();
+}
+
+class _OrderDetailsBodyState extends State<OrderDetailsBody> {
+  ItemModel item = Get.arguments;
+
+  @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
-    ItemModel item = Get.arguments;
     return Padding(
-      padding: EdgeInsets.all(8.0.sp),
+      padding: AppConsts.mainPadding,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          const AspectRatio(aspectRatio: AppConsts.aspect16on1),
+
           ///customer name
           TileText(
             first: StringsEn.customerName.tr,
@@ -28,7 +36,7 @@ class OrderDetailsBody extends StatelessWidget {
             ///todo
             second: CacheHelper.getData(key: StringsEn.name) ?? 'Unknown',
           ),
-          SizedBox(height: size.height * .02.h),
+          const AspectRatio(aspectRatio: AppConsts.aspect16on1),
 
           ///phone number
           TileText(
@@ -38,7 +46,7 @@ class OrderDetailsBody extends StatelessWidget {
             second: CacheHelper.getData(key: StringsEn.phoneNumber) ??
                 '000000000000',
           ),
-          SizedBox(height: size.height * .02.h),
+          const AspectRatio(aspectRatio: AppConsts.aspect16on1),
 
           ///address
           SectionAddress(
@@ -46,7 +54,7 @@ class OrderDetailsBody extends StatelessWidget {
             apartmentNumber: item.address!.apartmentNumber!,
             specialMarque: item.address!.areaNumber!,
           ),
-          SizedBox(height: size.height * .02.h),
+          const AspectRatio(aspectRatio: AppConsts.aspect16on1),
 
           ///info
           SectionInfo(item: item),

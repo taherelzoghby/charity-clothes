@@ -14,19 +14,6 @@ class OrderTrackingController extends GetxController {
 
   final items = <ItemModel>[].obs;
   final isLoading = false.obs;
-  RefreshController refreshController = RefreshController(
-    initialRefresh: false,
-  );
-
-  onRefresh() async {
-    await getData();
-    refreshController.refreshCompleted();
-  }
-
-  onLoading() async {
-    await Future.delayed(const Duration(milliseconds: 1000));
-    refreshController.loadComplete();
-  }
 
   ///get data from firestore
   getData() async {
@@ -71,11 +58,5 @@ class OrderTrackingController extends GetxController {
   void onReady() {
     getData();
     super.onReady();
-  }
-
-  @override
-  void dispose() {
-    refreshController.dispose();
-    super.dispose();
   }
 }

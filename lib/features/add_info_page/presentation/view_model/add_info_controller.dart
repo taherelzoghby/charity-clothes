@@ -170,7 +170,7 @@ class AddInfoController extends GetxController {
   }
 
   ///has permission?
-  Future<bool> permisiion(BuildContext context) async {
+  Future<bool> permissionMethod(BuildContext context) async {
     final bool hasPermission = await handleLocationPermission(context);
     return hasPermission;
   }
@@ -185,7 +185,7 @@ class AddInfoController extends GetxController {
   getCurrentLocation(BuildContext context) async {
     markers.clear();
     try {
-      final bool hasPermission = await permisiion(context);
+      final bool hasPermission = await permissionMethod(context);
       if (!hasPermission) return;
       isLoading.value = true;
       await Geolocator.getCurrentPosition(

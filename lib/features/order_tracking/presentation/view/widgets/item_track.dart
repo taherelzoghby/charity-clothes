@@ -28,106 +28,117 @@ class ItemTrack extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
     return Padding(
       padding: EdgeInsets.all(6.sp),
-      child: Container(
-        height: size.height * .25.h,
-        width: size.width.w,
-        decoration: AppConsts.decorationItemTrack,
-        child: Padding(
-          padding: EdgeInsets.all(5.sp),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              SizedBox(height: size.height * .01.h),
+      child: AspectRatio(
+        aspectRatio: AppConsts.aspect16on10,
+        child: Container(
+          decoration: AppConsts.decorationItemTrack,
+          child: Padding(
+            padding: AppConsts.padding8,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                const AspectRatio(aspectRatio: AppConsts.aspect40on1),
 
-              ///info
-              Row(
-                children: [
-                  ///image
-
-                  ImageWidget(
-                    height: size.height * .15.h,
-                    width: size.width * .35.w,
-                    image: item.imageUrl!,
-                  ),
-                  SizedBox(width: size.width * .01.w),
-
-                  ///info (date-pieces-status)
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                ///info
+                Expanded(
+                  flex: 2,
+                  child: Row(
                     children: [
-                      ///date-time
-                      Text(
-                        "${StringsEn.date.tr} : ${DateFormat.yMd().format(DateTime.parse(item.date!))} ${item.time!}",
-                        style: AppConsts.styleError,
-                      ),
-                      SizedBox(height: size.height * .01.h),
+                      ///image
 
-                      ///number of pieces
-                      Text(
-                        '${StringsEn.numberOfPieces.tr} : ${item.pieces}',
-                        style: AppConsts.style16,
+                      Expanded(
+                        flex: 2,
+                        child: ImageWidget(image: item.imageUrl!),
                       ),
-                      SizedBox(height: size.height * .01.h),
+                      SizedBox(width: size.width * .03.w),
 
-                      ///status
-                      Row(
-                        children: [
-                          Text(
-                            '${StringsEn.status.tr} : ',
-                            style: AppConsts.style16,
-                          ),
-                          Text(
-                            item.status!,
-                            style: AppConsts.style16Green,
-                          ),
-                        ],
+                      ///info (date-pieces-status)
+                      Expanded(
+                        flex: 3,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            ///date-time
+                            Text(
+                              "${StringsEn.date.tr} : ${DateFormat.yMd().format(DateTime.parse(item.date!))} ${item.time!}",
+                              style: AppConsts.styleError,
+                            ),
+                            SizedBox(height: size.height * .01.h),
+
+                            ///number of pieces
+                            Text(
+                              '${StringsEn.numberOfPieces.tr} : ${item.pieces}',
+                              style: AppConsts.style16,
+                            ),
+                            SizedBox(height: size.height * .01.h),
+
+                            ///status
+                            Row(
+                              children: [
+                                Text(
+                                  '${StringsEn.status.tr} : ',
+                                  style: AppConsts.style16,
+                                ),
+                                Text(
+                                  item.status!,
+                                  style: AppConsts.style16Green,
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
                     ],
                   ),
-                ],
-              ),
-              SizedBox(height: size.height * .01.h),
+                ),
+                const AspectRatio(aspectRatio: AppConsts.aspect40on1),
 
-              ///details button - cancel button
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  ///details button
-                  SizedBox(
-                    height: size.height * .06.h,
-                    width: size.width * .35.w,
-                    child: CustomButton(
-                      text: StringsEn.details.tr,
-                      onTap: () => Get.toNamed(
-                        orderDetailsPath,
-                        arguments: item,
+                ///details button - cancel button
+                Expanded(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      ///details button
+                      Expanded(
+                        child: Padding(
+                          padding: AppConsts.paddingV12,
+                          child: CustomButton(
+                            text: StringsEn.details.tr,
+                            onTap: () => Get.toNamed(
+                              orderDetailsPath,
+                              arguments: item,
+                            ),
+                          ),
+                        ),
                       ),
-                    ),
-                  ),
-                  SizedBox(width: size.width * .05.w),
+                      SizedBox(width: size.width * .05.w),
 
-                  ///cancel button
-                  SizedBox(
-                    height: size.height * .06.h,
-                    width: size.width * .35.w,
-                    child: CustomButton(
-                      text: StringsEn.cancel.tr,
-                      isBorder: true,
-                      styleText: AppConsts.style18Grey,
-                      background: AppConsts.white,
+                      ///cancel button
+                      Expanded(
+                        child: Padding(
+                          padding: AppConsts.paddingV12,
+                          child: CustomButton(
+                            text: StringsEn.cancel.tr,
+                            isBorder: true,
+                            styleText: AppConsts.style18Grey,
+                            background: AppConsts.white,
 
-                      ///delete item
-                      onTap: () => customDialog(
-                        title: 'Do you Want to delete this Item?',
-                        textConfirm: 'Delete',
-                        onConfirm: () => cont.delete(id: item.idProduct),
-                        onCancel: () => Get.back(),
+                            ///delete item
+                            onTap: () => customDialog(
+                              title: 'Do you Want to delete this Item?',
+                              textConfirm: 'Delete',
+                              onConfirm: () => cont.delete(id: item.idProduct),
+                              onCancel: () => Get.back(),
+                            ),
+                          ),
+                        ),
                       ),
-                    ),
+                    ],
                   ),
-                ],
-              ),
-            ],
+                ),
+              ],
+            ),
           ),
         ),
       ),
