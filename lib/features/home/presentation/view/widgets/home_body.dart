@@ -10,99 +10,72 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:page_view_dot_indicator/page_view_dot_indicator.dart';
 
-class HomeBody extends StatelessWidget {
+import 'carousel_slider_section.dart';
+
+class HomeBody extends StatefulWidget {
   const HomeBody({super.key});
 
   @override
+  State<HomeBody> createState() => _HomeBodyState();
+}
+
+class _HomeBodyState extends State<HomeBody> {
+  final cont = Get.find<HomeController>();
+
+  @override
   Widget build(BuildContext context) {
-    final cont = Get.find<HomeController>();
     Size size = MediaQuery.of(context).size;
-    return SafeArea(
-      child: Padding(
-        padding: EdgeInsets.all(12.sp),
-        child: Column(
-          children: [
-            ///logo
-            Align(
-              alignment: Alignment.centerRight,
-              child: SizedBox(
-                height: size.height * .1.h,
-                child: Image.asset(
-                  AppAssets.logo,
-                  fit: BoxFit.fill,
-                ),
-              ),
+    return Padding(
+      padding: AppConsts.mainPadding,
+      child: ListView(
+        children: [
+          ///logo
+          Align(
+            alignment: Alignment.centerRight,
+            child: SizedBox(
+              height: size.height * .1.h,
+              child: Image.asset(AppAssets.logo, fit: BoxFit.fill),
             ),
-            SizedBox(height: size.height * .025),
+          ),
+          const AspectRatio(aspectRatio: AppConsts.aspect16on1),
 
-            ///CarouselSlider
-            SizedBox(
-              height: size.height * .35.h,
-              child: CarouselSlider(
-                items: AppAssets.images
-                    .map(
-                      (image) => Container(
-                        decoration: AppConsts.decoration,
-                        height: size.height,
-                        child: Image.asset(
-                          image,
-                          fit: BoxFit.fill,
-                          width: size.width * .9,
-                        ),
-                      ),
-                    )
-                    .toList(),
-                options: CarouselOptions(
-                  height: size.height,
-                  viewportFraction: 1,
-                  initialPage: 0,
-                  enableInfiniteScroll: true,
-                  autoPlay: true,
-                  autoPlayInterval: const Duration(seconds: 3),
-                  autoPlayAnimationDuration: const Duration(milliseconds: 800),
-                  autoPlayCurve: Curves.fastOutSlowIn,
-                  enlargeCenterPage: true,
-                  enlargeFactor: 1,
-                  onPageChanged: (int index, CarouselPageChangedReason c) =>
-                      cont.carsoulChanged(index),
-                  scrollDirection: Axis.horizontal,
-                ),
-              ),
+          ///CarouselSlider
+          SectionCarouselSlider(
+            onPageChanged: (int index, CarouselPageChangedReason c) =>
+                cont.carsoulChanged(index),
+          ),
+          const AspectRatio(aspectRatio: AppConsts.aspect16on1),
+
+          ///000
+          Obx(
+            () => PageViewDotIndicator(
+              currentItem: cont.index.value,
+              count: AppAssets.images.length,
+              unselectedColor: Colors.black26,
+              selectedColor: AppConsts.mainColor,
+              size: Size(size.width * .06.w, size.height * .008.h),
+              unselectedSize: Size(size.width * .02.w, size.height * .01.h),
+              alignment: Alignment.center,
+              boxShape: BoxShape.rectangle,
+              //defaults to circle
+              borderRadius: AppConsts.radius5,
+              //only for rectangle shape
+              onItemClicked: (index) {},
             ),
-            SizedBox(height: size.height * .015),
+          ),
 
-            ///000
-            Obx(
-              () => PageViewDotIndicator(
-                currentItem: cont.index.value,
-                count: AppAssets.images.length,
-                unselectedColor: Colors.black26,
-                selectedColor: AppConsts.mainColor,
-                size: Size(size.width * .06.w, size.height * .008.h),
-                unselectedSize: Size(size.width * .02.w, size.height * .01.h),
-                alignment: Alignment.center,
-                boxShape: BoxShape.rectangle,
-                //defaults to circle
-                borderRadius: BorderRadius.circular(5.sp),
-                //only for rectangle shape
-                onItemClicked: (index) {},
-              ),
+          ///
+          const AspectRatio(aspectRatio: AppConsts.aspect16on2),
+
+          ///donate clothes button
+          AspectRatio(
+            aspectRatio: AppConsts.aspectRatioButtonAuth,
+            child: CustomButton(
+              text: StringsEn.donateClothes.tr,
+              onTap: () => Get.toNamed(loginDonatePath),
             ),
-
-            ///
-            SizedBox(height: size.height * .05),
-
-            ///donate clothes button
-            SizedBox(
-              height: size.height * .08.h,
-              width: size.width * .8.w,
-              child: CustomButton(
-                text: StringsEn.donateClothes.tr,
-                onTap: () => Get.toNamed(loginDonatePath),
-              ),
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

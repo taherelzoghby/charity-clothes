@@ -13,6 +13,14 @@ import 'package:get_it/get_it.dart';
 final getIt = GetIt.instance;
 
 void setupServiceLocator() {
+  //core
+  initService();
+
+  //repo
+  initRepositiories();
+}
+
+void initService() {
   ///FireAuth
   getIt.registerSingleton<FireAuth>(FireAuth());
 
@@ -40,17 +48,19 @@ void setupServiceLocator() {
     ),
   );
 
-  ///  auth repo implementation
-  getIt.registerSingleton<AuthRepoImplementation>(
-    AuthRepoImplementation(
-      signInPhone: getIt.get<SignInPhone>(),
-    ),
-  );
-
   ///  delete account
   getIt.registerSingleton<DeleteAccount>(
     DeleteAccount(
       fireAuth: getIt.get<FireAuth>(),
+    ),
+  );
+}
+
+void initRepositiories() {
+  ///  auth repo implementation
+  getIt.registerSingleton<AuthRepoImplementation>(
+    AuthRepoImplementation(
+      signInPhone: getIt.get<SignInPhone>(),
     ),
   );
 

@@ -1,7 +1,6 @@
 import 'package:donation/core/consts/style.dart';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomButton extends StatelessWidget {
   const CustomButton({
@@ -23,19 +22,16 @@ class CustomButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: onTap,
-      borderRadius: BorderRadius.circular(15.sp),
+      borderRadius: AppConsts.radius15,
       child: Container(
         decoration: BoxDecoration(
           color: background,
-          borderRadius: BorderRadius.circular(15.sp),
+          borderRadius: AppConsts.radius15,
           border: isBorder ? Border.all(color: AppConsts.grey) : null,
           boxShadow: AppConsts.boxShadows,
         ),
         child: Center(
-          child: Text(
-            text,
-            style: styleText,
-          ),
+          child: Text(text, style: styleText),
         ),
       ),
     );

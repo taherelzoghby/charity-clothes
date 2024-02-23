@@ -1,4 +1,4 @@
-// ignore_for_file: body_might_complete_normally_nullable
+// ignore_for_file: body_might_complete_normally_nullable, implementation_imports
 
 import 'package:donation/core/consts/strings.dart';
 import 'package:donation/core/helper/cache_helper.dart';

@@ -13,27 +13,39 @@ import 'package:get/get.dart';
 
 import '../../../connect_us/presentation/view/connectus_view.dart';
 
-class GnavView extends StatelessWidget {
+class GnavView extends StatefulWidget {
   const GnavView({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    ///screens
-    const List<Widget> widgets = [
-      OurPlanView(),
-      OrderTrackingView(),
-      HomeView(),
-      ConnectUsView(),
-    ];
+  State<GnavView> createState() => _GnavViewState();
+}
 
+class _GnavViewState extends State<GnavView> {
+  final connect = Get.put(ConnectionStatusSingleton());
+
+  ///screens
+  static const List<Widget> widgets = [
+    OurPlanView(),
+    OrderTrackingView(),
+    HomeView(),
+    ConnectUsView(),
+  ];
+
+  @override
+  void initState() {
     ///init OrderTrackingController
     Get.put(
       OrderTrackingController(
         orderTrackingRepo: getIt.get<OrderTrackingRepoImplementation>(),
       ),
     );
-    final connect = Get.put(ConnectionStatusSingleton());
+
     Get.put(GnavController());
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       body: GetBuilder<GnavController>(
         init: GnavController(),

@@ -3,8 +3,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:donation/core/models/item_model.dart';
 import 'package:donation/core/services/firebase/firebase_auth/auth_firebase.dart';
 
-import '../../../models/user_token.dart';
-
 class FireStore {
   FireAuth auth;
 
