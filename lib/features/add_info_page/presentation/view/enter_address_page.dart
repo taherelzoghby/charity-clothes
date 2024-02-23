@@ -26,7 +26,9 @@ class EnterAddressPage extends StatelessWidget {
         centerTitle: true,
         backgroundColor: AppConsts.mainColor,
       ),
-      body: const EnterAddressBody(),
+      body: const SafeArea(
+        child: EnterAddressBody(),
+      ),
     );
   }
 }

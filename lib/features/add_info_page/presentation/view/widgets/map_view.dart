@@ -1,3 +1,4 @@
+import 'package:donation/core/consts/style.dart';
 import 'package:donation/core/services/service_locator.dart';
 import 'package:donation/core/widgets/custom_button.dart';
 import 'package:donation/core/widgets/loading_widget.dart';
@@ -23,7 +24,7 @@ class GoogleMapBody extends StatelessWidget {
             addInfoRepo: getIt.get<AddInfoRepoImplementation>(),
           ),
           builder: (cont) => ClipRRect(
-            borderRadius: BorderRadius.circular(15.sp),
+            borderRadius: AppConsts.radius15,
             child: GoogleMap(
               markers: cont.markers,
               trafficEnabled: true,

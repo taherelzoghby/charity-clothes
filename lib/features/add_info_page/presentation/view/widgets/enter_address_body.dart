@@ -4,60 +4,60 @@ import 'package:donation/core/services/service_locator.dart';
 import 'package:donation/core/widgets/customButton.dart';
 import 'package:donation/core/widgets/text_form_field.dart';
 import 'package:donation/features/add_info_page/data/repo/add_info_repo_implementation.dart';
+import 'package:donation/features/add_info_page/presentation/view/widgets/current_position_widget.dart';
 import 'package:donation/features/add_info_page/presentation/view/widgets/map_view.dart';
 import 'package:donation/features/add_info_page/presentation/view_model/add_info_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-class EnterAddressBody extends StatelessWidget {
+class EnterAddressBody extends StatefulWidget {
   const EnterAddressBody({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  State<EnterAddressBody> createState() => _EnterAddressBodyState();
+}
+
+class _EnterAddressBodyState extends State<EnterAddressBody> {
+  @override
+  void initState() {
     Get.put(
-      AddInfoController(
-        addInfoRepo: getIt.get<AddInfoRepoImplementation>(),
-      ),
+      AddInfoController(addInfoRepo: getIt.get<AddInfoRepoImplementation>()),
     );
-    final cont = Get.find<AddInfoController>();
+    super.initState();
+  }
+
+  final cont = Get.find<AddInfoController>();
+
+  @override
+  Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Padding(
-      padding: EdgeInsets.all(8.0.sp),
+      padding: AppConsts.mainPadding,
       child: ListView(
         children: [
+          const AspectRatio(aspectRatio: AppConsts.aspect16on1),
+
           ///map
-          Container(
-            height: size.height * .35,
-            width: size.width,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(15),
-              border: Border.all(
-                color: AppConsts.mainColor,
-              ),
+          AspectRatio(
+            aspectRatio: AppConsts.aspect16on14,
+            child: Container(
+              decoration: AppConsts.decorationMapView,
+              child: const GoogleMapBody(),
             ),
-            child: const GoogleMapBody(),
           ),
-          SizedBox(height: size.height * .01.h),
+          const AspectRatio(aspectRatio: AppConsts.aspect40on1),
 
           ///current position
           GetBuilder<AddInfoController>(
             init: AddInfoController(
               addInfoRepo: getIt.get<AddInfoRepoImplementation>(),
             ),
-            builder: (controller) => Container(
-              height: size.height * .05.h,
-              width: size.width * .75.w,
-              decoration: AppConsts.decorationNormal,
-              child: Center(
-                child: Text(
-                  controller.currentPos!,
-                  style: AppConsts.style18,
-                ),
-              ),
+            builder: (controller) => CurrentPositionWidget(
+              currentPosition: controller.currentPos!,
             ),
           ),
-          SizedBox(height: size.height * .01.h),
+          const AspectRatio(aspectRatio: AppConsts.aspect40on1),
 
           ///Apartment number - special marque
           Row(
@@ -77,7 +77,7 @@ class EnterAddressBody extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: size.height * .05.h),
+          const AspectRatio(aspectRatio: AppConsts.aspect16on1),
 
           ///Enter the address in detail
           CustomTextFormField(
@@ -85,19 +85,20 @@ class EnterAddressBody extends StatelessWidget {
             hint: StringsEn.addresSDetail.tr,
             onChanged: (value) => cont.changeAddressDetails(value!),
           ),
-          SizedBox(height: size.height * .05),
+          const AspectRatio(aspectRatio: AppConsts.aspect16on2),
 
           ///Confirm address
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 15.w),
+            padding: AppConsts.mainPadding,
             child: AspectRatio(
-              aspectRatio: (.5 / .07).sp,
+              aspectRatio: AppConsts.aspectRatioButtonAuth,
               child: CustomButton(
                 text: StringsEn.confirmAddress.tr,
                 onTap: () => cont.confirmAddress(),
               ),
             ),
-          )
+          ),
+          const AspectRatio(aspectRatio: AppConsts.aspect16on2),
         ],
       ),
     );

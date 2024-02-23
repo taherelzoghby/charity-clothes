@@ -62,6 +62,10 @@ abstract class AppConsts {
     ),
     borderRadius: BorderRadius.circular(15),
   );
+  static BoxDecoration decorationMapView = BoxDecoration(
+    borderRadius: radius15,
+    border: Border.all(color: mainColor),
+  );
 
   //shadows
   static const List<BoxShadow> boxShadows = [
