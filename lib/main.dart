@@ -29,12 +29,18 @@ Future<void> main() async {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
   @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  final cont = Get.find<LocalizationsServices>();
+
+  @override
   Widget build(BuildContext context) {
-    final cont = Get.find<LocalizationsServices>();
     return ScreenUtilInit(
       designSize: const Size(393, 851),
       builder: (context, widget) {

@@ -9,20 +9,20 @@ class OurPlanBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: AppConsts.padding8,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          SizedBox(height: size.height * .05.h),
+          const AspectRatio(aspectRatio: AppConsts.aspect16on1),
+
           ///app name
           Text(
             '${StringsEn.appName.tr} ',
             style: AppConsts.style16Green.copyWith(fontSize: 30.sp),
             textAlign: TextAlign.center,
           ),
-          SizedBox(height: size.height * .05.h),
+          const AspectRatio(aspectRatio: AppConsts.aspect16on1),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [

@@ -18,7 +18,9 @@ class OurPlanView extends StatelessWidget {
         ),
         centerTitle: true,
       ),
-      body: const OurPlanBody(),
+      body: const SafeArea(
+        child: OurPlanBody(),
+      ),
     );
   }
 }
