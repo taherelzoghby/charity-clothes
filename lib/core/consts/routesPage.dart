@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 import 'package:donation/core/widgets/photo_view.dart';
 import 'package:donation/features/add_info_page/presentation/view/add_info_page.dart';
 import 'package:donation/features/add_info_page/presentation/view/enter_address_page.dart';
-import 'package:donation/features/auth_donate_clothes/presenation/view/confirm_otp.dart';
+import 'package:donation/features/auth_donate_clothes/presenation/view/confirm_otp_view.dart';
 import 'package:donation/features/order_tracking/presentation/view/order_details.dart';
 import 'package:donation/features/splash/presentation/view/splash_view.dart';
 import '../services/middleware.dart';

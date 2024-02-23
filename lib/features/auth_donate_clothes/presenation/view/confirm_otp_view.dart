@@ -5,18 +5,30 @@ import 'package:donation/features/auth_donate_clothes/presenation/view_model/otp
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class ConfirmOtpView extends StatelessWidget {
+class ConfirmOtpView extends StatefulWidget {
   const ConfirmOtpView({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  State<ConfirmOtpView> createState() => _ConfirmOtpViewState();
+}
+
+class _ConfirmOtpViewState extends State<ConfirmOtpView> {
+  @override
+  void initState() {
     Get.lazyPut(
       () => OtpController(
         authRepo: getIt.get<AuthRepoImplementation>(),
       ),
     );
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return const Scaffold(
-      body: ConfirmOtpBody(),
+      body: SafeArea(
+        child: ConfirmOtpBody(),
+      ),
     );
   }
 }

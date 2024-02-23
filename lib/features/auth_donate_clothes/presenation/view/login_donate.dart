@@ -6,16 +6,24 @@ import 'package:donation/features/auth_donate_clothes/presenation/view_model/log
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class LoginDonateView extends StatelessWidget {
+class LoginDonateView extends StatefulWidget {
   const LoginDonateView({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  State<LoginDonateView> createState() => _LoginDonateViewState();
+}
+
+class _LoginDonateViewState extends State<LoginDonateView> {
+  @override
+  void initState() {
     Get.put(
-      LoginController(
-        authRepo: getIt.get<AuthRepoImplementation>(),
-      ),
+      LoginController(authRepo: getIt.get<AuthRepoImplementation>()),
     );
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -27,7 +35,9 @@ class LoginDonateView extends StatelessWidget {
         ),
         backgroundColor: AppConsts.mainColor,
       ),
-      body: const LoginDonateBody(),
+      body: const SafeArea(
+        child: LoginDonateBody(),
+      ),
     );
   }
 }

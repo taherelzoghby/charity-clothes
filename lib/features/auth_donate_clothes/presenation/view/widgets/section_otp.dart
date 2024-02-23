@@ -6,20 +6,23 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
-class SectionOtp extends StatelessWidget {
+class SectionOtp extends StatefulWidget {
   const SectionOtp({super.key});
 
   @override
+  State<SectionOtp> createState() => _SectionOtpState();
+}
+
+class _SectionOtpState extends State<SectionOtp> {
+  final cont = Get.find<OtpController>();
+
+  @override
   Widget build(BuildContext context) {
-    final cont = Get.find<OtpController>();
     Size size = MediaQuery.of(context).size;
     return Form(
       key: cont.formKey,
       child: Padding(
-        padding: EdgeInsets.symmetric(
-          vertical: 7.0.h,
-          horizontal: 20.w,
-        ),
+        padding: AppConsts.mainPadding,
         child: PinCodeTextField(
           appContext: context,
           pastedTextStyle: AppConsts.pastedTextStyle,
@@ -37,7 +40,7 @@ class SectionOtp extends StatelessWidget {
             selectedColor: AppConsts.mainColor,
             inactiveColor: AppConsts.mainColor.withOpacity(.5),
             shape: PinCodeFieldShape.box,
-            borderRadius: BorderRadius.circular(5),
+            borderRadius: AppConsts.radius5,
             fieldHeight: size.height * .055.h,
             fieldWidth: size.width * .1.w,
             activeFillColor: AppConsts.sWhite,
