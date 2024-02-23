@@ -6,6 +6,7 @@ import 'package:donation/core/widgets/dialog.dart';
 import 'package:donation/features/auth_donate_clothes/data/auth_repo/auth_repo_implementation.dart';
 import 'package:donation/features/connect_us/data/auth_repo/auth_connect_us_repo_implementation.dart';
 import 'package:donation/features/connect_us/presentation/view/widgets/connectus_body.dart';
+import 'package:donation/features/connect_us/presentation/view/widgets/popup_widget.dart';
 import 'package:donation/features/connect_us/presentation/view_model/connect_us_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -13,19 +14,28 @@ import 'package:get/get.dart';
 
 import '../../../../core/consts/assets.dart';
 
-class ConnectUsView extends GetView<LocalizationsServices> {
+class ConnectUsView extends StatefulWidget {
   const ConnectUsView({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  State<ConnectUsView> createState() => _ConnectUsViewState();
+}
+
+class _ConnectUsViewState extends State<ConnectUsView> {
+  @override
+  void initState() {
     Get.put(
       ConnectUsController(
         authConnectUsRepo: getIt.get<AuthConnectUsRepoImplementation>(),
         authRepo: getIt.get<AuthRepoImplementation>(),
       ),
     );
-    final cont=Get.find<LocalizationsServices>();
-    Size size = MediaQuery.of(context).size;
+
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppConsts.mainColor,
@@ -34,61 +44,14 @@ class ConnectUsView extends GetView<LocalizationsServices> {
           style: AppConsts.style18,
         ),
         centerTitle: true,
-        actions: [
+        actions: const [
           ///settings
-          PopupMenuButton(
-            position: PopupMenuPosition.under,
-            icon: const Icon(Icons.settings),
-            onSelected: (val) {
-              if (val == 0) {
-                showDialog(
-                  context: context,
-                  builder: (context) {
-                    return AlertDialogWidget(
-                      contentText: StringsEn.questionLang.tr,
-                      confirmFunction: () {
-                        ///change language
-                        cont.changeLocale(
-                          cont.lang.value == 'ar' ? 'en' : 'ar',
-                        );
-                      },
-                      declineFunction: () => Get.back(),
-                      confirmText: StringsEn.yes.tr,
-                      cancelText: StringsEn.no.tr,
-                    );
-                  },
-                );
-              }
-            },
-            itemBuilder: (context) => [
-              PopupMenuItem(
-                value: 0,
-                child: Row(
-                  children: [
-                    ///image
-                    SvgPicture.asset(
-                      cont.lang.value == 'ar'
-                          ? AppAssets.us
-                          : AppAssets.egypt,
-                      height: size.height * .02,
-                    ),
-                    SizedBox(width: size.width * .02),
-
-                    ///english or arabic
-                    Text(
-                      cont.lang.value == 'ar'
-                          ? StringsEn.English.tr
-                          : StringsEn.Arabic.tr,
-                      style: const TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
+          PopUbWidget(),
         ],
       ),
-      body: const ConnectUsBody(),
+      body: const SafeArea(
+        child: ConnectUsBody(),
+      ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {},
         label: Text(StringsEn.feedback.tr),

@@ -4,65 +4,76 @@ import 'package:donation/core/widgets/customButton.dart';
 import 'package:donation/features/connect_us/presentation/view/widgets/SectionNumbers.dart';
 import 'package:donation/features/connect_us/presentation/view_model/connect_us_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import 'SectionSocialNetwork.dart';
 
-class ConnectUsBody extends StatelessWidget {
+class ConnectUsBody extends StatefulWidget {
   const ConnectUsBody({super.key});
 
   @override
+  State<ConnectUsBody> createState() => _ConnectUsBodyState();
+}
+
+class _ConnectUsBodyState extends State<ConnectUsBody> {
+  final cont = Get.find<ConnectUsController>();
+
+  @override
   Widget build(BuildContext context) {
-    final cont = Get.find<ConnectUsController>();
-    Size size = MediaQuery.of(context).size;
-    return Column(
-      children: [
-        ///phone numbers
-        const SectionNumbers(),
+    return Padding(
+      padding: AppConsts.mainPadding,
+      child: ListView(
+        children: [
+          ///phone numbers
+          const SectionNumbers(),
 
-        ///social network
-        const SectionSocialNetwork(),
-        SizedBox(height: size.height * .02.w),
+          ///social network
+          const SectionSocialNetwork(),
+          const AspectRatio(aspectRatio: AppConsts.aspect16on1),
 
-        ///check if have account or not ?
+          ///check if have account or not ?
 
-        Obx(
-          () => cont.haveAccount.value
-              ? Column(
-                  children: [
-                    ///sign out account button
-                    SizedBox(
-                      height: size.height * .05.h,
-                      width: size.width * .5.w,
-                      child: CustomButton(
-                        text: StringsEn.signOut.tr,
-                        onTap: () => cont.readyToSignOut(),
-                        background: AppConsts.white,
-                        isBorder: true,
-                        styleText: AppConsts.style14,
+          Obx(
+            () => cont.haveAccount.value
+                ? Column(
+                    children: [
+                      ///sign out account button
+                      AspectRatio(
+                        aspectRatio: AppConsts.aspectRatioButtonAuth,
+                        child: Padding(
+                          padding: AppConsts.padding10V25H,
+                          child: CustomButton(
+                            text: StringsEn.signOut.tr,
+                            onTap: () => cont.readyToSignOut(),
+                            background: AppConsts.white,
+                            isBorder: true,
+                            styleText: AppConsts.style14,
+                          ),
+                        ),
                       ),
-                    ),
-                    SizedBox(height: size.height * .01.w),
+                      const AspectRatio(aspectRatio: AppConsts.aspect40on1),
 
-                    ///delete account button
-                    SizedBox(
-                      height: size.height * .05.h,
-                      width: size.width * .5.w,
-                      child: CustomButton(
-                        text: StringsEn.deleteAccount.tr,
-                        onTap: () => cont.readyToDeleteAccount(),
-                        background: AppConsts.red.withOpacity(.8),
-                        isBorder: true,
-                        styleText:
-                            AppConsts.style14.copyWith(color: AppConsts.sWhite),
-                      ),
-                    )
-                  ],
-                )
-              : Container(),
-        ),
-      ],
+                      ///delete account button
+                      AspectRatio(
+                        aspectRatio: AppConsts.aspectRatioButtonAuth,
+                        child: Padding(
+                          padding: AppConsts.padding10V25H,
+                          child: CustomButton(
+                            text: StringsEn.deleteAccount.tr,
+                            onTap: () => cont.readyToDeleteAccount(),
+                            background: AppConsts.red.withOpacity(.8),
+                            isBorder: true,
+                            styleText: AppConsts.style14
+                                .copyWith(color: AppConsts.sWhite),
+                          ),
+                        ),
+                      )
+                    ],
+                  )
+                : Container(),
+          ),
+        ],
+      ),
     );
   }
 }

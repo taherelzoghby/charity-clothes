@@ -147,6 +147,7 @@ abstract class AppConsts {
   static EdgeInsets paddingH50 = EdgeInsets.symmetric(horizontal: 50.w);
   static EdgeInsets padding8 = const EdgeInsets.all(8);
   static EdgeInsets padding40 = const EdgeInsets.all(40);
+  static EdgeInsets padding10V25H = const EdgeInsets.symmetric(vertical: 10,horizontal: 25);
 
   //aspect ratio
   static const double aspect16on2 = 16 / 2;
