@@ -1,4 +1,5 @@
 import 'package:donation/core/consts/strings.dart';
+import 'package:donation/core/consts/style.dart';
 import 'package:donation/core/widgets/customButton.dart';
 import 'package:donation/core/widgets/loading_widget.dart';
 import 'package:donation/features/add_info_page/presentation/view/widgets/add_image_section.dart';
@@ -8,41 +9,49 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-class AddInfoBody extends StatelessWidget {
+class AddInfoBody extends StatefulWidget {
   const AddInfoBody({super.key});
 
   @override
+  State<AddInfoBody> createState() => _AddInfoBodyState();
+}
+
+class _AddInfoBodyState extends State<AddInfoBody> {
+  final cont = Get.find<AddInfoController>();
+
+  @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
-    final cont = Get.find<AddInfoController>();
     return Obx(
       () => cont.isLoadingSubmitted.value
           ? const LoadingWidget()
-          : Padding(
-              padding: EdgeInsets.all(8.0.sp),
-              child: Form(
-                key: cont.formKey,
+          : Form(
+              key: cont.formKey,
+              child: Padding(
+                padding: AppConsts.mainPadding,
                 child: ListView(
                   children: [
+                    const AspectRatio(aspectRatio: AppConsts.aspect16on1),
+
                     ///select Image from Phone
                     const AddImageSection(),
-                    SizedBox(height: size.height * .04.h),
+                    const AspectRatio(aspectRatio: AppConsts.aspect16on1),
 
                     /// add info
                     const AddInfoSection(),
-                    SizedBox(height: size.height * .04.h),
+                    const AspectRatio(aspectRatio: AppConsts.aspect16on2),
 
                     ///submit
                     Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 25.w),
+                      padding: AppConsts.mainPadding,
                       child: AspectRatio(
-                        aspectRatio: (.5 / .07).sp,
+                        aspectRatio: AppConsts.aspectRatioButtonAuth,
                         child: CustomButton(
                           text: StringsEn.submit.tr,
                           onTap: () => cont.addToFirebase(),
                         ),
                       ),
                     ),
+                    const AspectRatio(aspectRatio: AppConsts.aspect16on2),
                   ],
                 ),
               ),

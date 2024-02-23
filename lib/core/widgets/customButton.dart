@@ -31,7 +31,10 @@ class CustomButton extends StatelessWidget {
           boxShadow: AppConsts.boxShadows,
         ),
         child: Center(
-          child: Text(text, style: styleText),
+          child: Padding(
+            padding: AppConsts.mainPadding,
+            child: Text(text, style: styleText),
+          ),
         ),
       ),
     );

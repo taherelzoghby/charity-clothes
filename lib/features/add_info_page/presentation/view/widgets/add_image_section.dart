@@ -5,19 +5,21 @@ import 'package:donation/core/consts/style.dart';
 import 'package:donation/features/add_info_page/presentation/view/widgets/bootom_sheet_widget.dart';
 import 'package:donation/features/add_info_page/presentation/view_model/add_info_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-class AddImageSection extends StatelessWidget {
-  const AddImageSection({
-    super.key,
-  });
+class AddImageSection extends StatefulWidget {
+  const AddImageSection({super.key});
 
+  @override
+  State<AddImageSection> createState() => _AddImageSectionState();
+}
+
+class _AddImageSectionState extends State<AddImageSection> {
   @override
   Widget build(BuildContext context) {
     final controller = Get.find<AddInfoController>();
     return AspectRatio(
-      aspectRatio: (2 / 1.5).sp,
+      aspectRatio: AppConsts.aspect13on10,
       child: InkWell(
         onTap: () {
           Get.bottomSheet(
@@ -35,24 +37,22 @@ class AddImageSection extends StatelessWidget {
           );
         },
         child: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(15.sp),
-            border: Border.all(
-              color: AppConsts.mainColor,
-            ),
-          ),
+          decoration: AppConsts.decorationAddImage,
           child: Center(
             child: Obx(
               () => controller.image.value.isEmpty
-                  ? AspectRatio(
-                      aspectRatio: (1 / .5).sp,
-                      child: Image.asset(
-                        AppAssets.addImage,
-                        color: AppConsts.mainColor,
+                  ? Padding(
+                      padding: AppConsts.padding40,
+                      child: AspectRatio(
+                        aspectRatio: AppConsts.aspect16on14,
+                        child: Image.asset(
+                          AppAssets.addImage,
+                          color: AppConsts.mainColor,
+                        ),
                       ),
                     )
                   : ClipRRect(
-                      borderRadius: BorderRadius.circular(15),
+                      borderRadius: AppConsts.radius15,
                       child: Image.file(
                         File(controller.image.value),
                         fit: BoxFit.fill,

@@ -7,16 +7,22 @@ import 'package:get/get.dart';
 
 import '../../../../core/consts/style.dart';
 
-class AddInfoView extends StatelessWidget {
+class AddInfoView extends StatefulWidget {
   const AddInfoView({super.key});
 
   @override
+  State<AddInfoView> createState() => _AddInfoViewState();
+}
+
+class _AddInfoViewState extends State<AddInfoView> {
+  final cont = Get.put(
+    AddInfoController(
+      addInfoRepo: getIt.get<AddInfoRepoImplementation>(),
+    ),
+  );
+
+  @override
   Widget build(BuildContext context) {
-    final cont = Get.put(
-      AddInfoController(
-        addInfoRepo: getIt.get<AddInfoRepoImplementation>(),
-      ),
-    );
     return Obx(
       () => Scaffold(
         appBar: cont.isLoadingSubmitted.value
@@ -34,7 +40,9 @@ class AddInfoView extends StatelessWidget {
                 ),
                 backgroundColor: AppConsts.mainColor,
               ),
-        body: const AddInfoBody(),
+        body: const SafeArea(
+          child: AddInfoBody(),
+        ),
       ),
     );
   }

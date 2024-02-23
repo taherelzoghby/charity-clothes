@@ -29,6 +29,8 @@ class _HomeBodyState extends State<HomeBody> {
       padding: AppConsts.mainPadding,
       child: ListView(
         children: [
+          const AspectRatio(aspectRatio: AppConsts.aspect16on1),
+
           ///logo
           Align(
             alignment: Alignment.centerRight,

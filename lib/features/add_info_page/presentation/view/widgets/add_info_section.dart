@@ -20,7 +20,7 @@ class AddInfoSection extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return GetBuilder(
-      init:AddInfoController(
+      init: AddInfoController(
         addInfoRepo: getIt.get<AddInfoRepoImplementation>(),
       ),
       builder: (cont) => Column(
@@ -30,7 +30,7 @@ class AddInfoSection extends StatelessWidget {
             hint: StringsEn.numberOfPieces.tr,
             onChanged: (String? value) => cont.changeNofPieces(value!),
           ),
-          SizedBox(height: size.height * .04.h),
+          const AspectRatio(aspectRatio: AppConsts.aspect16on1),
 
           ///add address
           CustomTextField(
@@ -43,7 +43,7 @@ class AddInfoSection extends StatelessWidget {
               icon: const Icon(Icons.location_on),
             ),
           ),
-          SizedBox(height: size.height * .04.h),
+          const AspectRatio(aspectRatio: AppConsts.aspect16on1),
 
           ///select date - time
           Row(

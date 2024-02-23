@@ -21,6 +21,10 @@ abstract class AppConsts {
     border: Border.all(color: mainColor, width: 2),
     borderRadius: BorderRadius.circular(15),
   );
+  static BoxDecoration decorationAddImage = BoxDecoration(
+    borderRadius: AppConsts.radius15,
+    border: Border.all(color: AppConsts.mainColor),
+  );
   static BoxDecoration decorationGrey = BoxDecoration(
     border: Border.all(color: grey, width: 2),
   );
@@ -132,9 +136,13 @@ abstract class AppConsts {
 
   //padding
   static EdgeInsets mainPadding = EdgeInsets.symmetric(horizontal: 12.w);
+  static EdgeInsets padding35V = EdgeInsets.symmetric(
+    vertical: 35.h,
+  );
   static EdgeInsets paddingV12 = EdgeInsets.symmetric(vertical: 12.h);
   static EdgeInsets paddingH50 = EdgeInsets.symmetric(horizontal: 50.w);
   static EdgeInsets padding8 = const EdgeInsets.all(8);
+  static EdgeInsets padding40 = const EdgeInsets.all(40);
 
   //aspect ratio
   static const double aspect16on2 = 16 / 2;
