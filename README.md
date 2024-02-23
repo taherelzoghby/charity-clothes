@@ -41,5 +41,7 @@ Donation Requests: Charitable organizations or individuals in need can submit re
 
 Geo-Location : The app can leverage location services to provide users with information about nearby donation centers, drop-off points, or charity events related to clothing donations.
 
+Languages: Arabic , English
+
 ## Setup
 install all packages by flutter pub get and add images in assets folder in your pc/laptop.
