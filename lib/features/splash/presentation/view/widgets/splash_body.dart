@@ -9,26 +9,26 @@ class SplashBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    return Column(
-      children: [
-        SizedBox(height: size.height * .3.h),
-        SizedBox(
-          height: size.height * .3.h,
-          child: Image.asset(
-            AppAssets.logo,
-            fit: BoxFit.fill,
+    return Padding(
+      padding: AppConsts.paddingH50,
+      child: Column(
+        children: [
+          const AspectRatio(aspectRatio: AppConsts.aspect16on14),
+          AspectRatio(
+            aspectRatio: AppConsts.aspect13on9,
+            child: Image.asset(
+              AppAssets.logo,
+              fit: BoxFit.fill,
+            ),
           ),
-        ),
-        SizedBox(height: size.height * .05.h),
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 50.w),
-          child: LinearProgressIndicator(
+          const AspectRatio(aspectRatio: AppConsts.aspect16on2),
+          LinearProgressIndicator(
             backgroundColor: AppConsts.secondColor,
             color: AppConsts.sWhite,
             minHeight: size.height * .003.h,
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

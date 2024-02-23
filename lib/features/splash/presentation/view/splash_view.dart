@@ -22,8 +22,8 @@ class _SplashViewState extends State<SplashView> {
 
   navigateToHome() {
     Future.delayed(
-      const Duration(seconds: 3),
-      () => Get.offAllNamed(bottomNavPath),
+      const Duration(seconds: 553),
+      //() => Get.offAllNamed(bottomNavPath),
     );
   }
 
@@ -31,7 +31,9 @@ class _SplashViewState extends State<SplashView> {
   Widget build(BuildContext context) {
     return const Scaffold(
       backgroundColor: AppConsts.mainColor,
-      body: SplashBody(),
+      body: SafeArea(
+        child: SplashBody(),
+      ),
     );
   }
 }

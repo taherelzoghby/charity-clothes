@@ -1,4 +1,3 @@
-
 import 'package:carousel_slider/carousel_options.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
@@ -21,18 +20,15 @@ class SectionCarouselSlider extends StatelessWidget {
         items: AppAssets.images
             .map(
               (image) => AspectRatio(
-            aspectRatio: AppConsts.aspect13on10,
-            child: Container(
-              decoration: AppConsts.decoration,
-              child: Image.asset(image, fit: BoxFit.fill),
-            ),
-          ),
-        )
+                aspectRatio: AppConsts.aspect13on10,
+                child: Container(
+                  decoration: AppConsts.decoration,
+                  child: Image.asset(image, fit: BoxFit.fill),
+                ),
+              ),
+            )
             .toList(),
-        options: carouselOption(
-          size.height,
-          onPageChanged: onPageChanged,
-        ),
+        options: carouselOption(size.height, onPageChanged: onPageChanged),
       ),
     );
   }
