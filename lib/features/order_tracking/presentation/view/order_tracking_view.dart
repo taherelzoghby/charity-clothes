@@ -7,16 +7,26 @@ import 'package:donation/features/order_tracking/presentation/view_model/order_t
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class OrderTrackingView extends StatelessWidget {
+class OrderTrackingView extends StatefulWidget {
   const OrderTrackingView({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  State<OrderTrackingView> createState() => _OrderTrackingViewState();
+}
+
+class _OrderTrackingViewState extends State<OrderTrackingView> {
+  @override
+  void initState() {
     Get.put(
       OrderTrackingController(
         orderTrackingRepo: getIt.get<OrderTrackingRepoImplementation>(),
       ),
     );
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -26,7 +36,9 @@ class OrderTrackingView extends StatelessWidget {
         centerTitle: true,
         backgroundColor: AppConsts.mainColor,
       ),
-      body: const OrderTrackingBody(),
+      body: const SafeArea(
+        child: OrderTrackingBody(),
+      ),
     );
   }
 }

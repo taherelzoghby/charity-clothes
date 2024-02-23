@@ -22,8 +22,8 @@ class _SplashViewState extends State<SplashView> {
 
   navigateToHome() {
     Future.delayed(
-      const Duration(seconds: 553),
-      //() => Get.offAllNamed(bottomNavPath),
+      const Duration(seconds: 3),
+      () => Get.offAllNamed(bottomNavPath),
     );
   }
 

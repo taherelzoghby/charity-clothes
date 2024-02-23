@@ -1,6 +1,6 @@
 import 'package:donation/core/consts/assets.dart';
+import 'package:donation/core/consts/style.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class EmptyWidget extends StatelessWidget {
@@ -8,17 +8,13 @@ class EmptyWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
     return Center(
-      child: Column(
-        children: [
-          SizedBox(height: size.height * .2.h),
-          SvgPicture.asset(
-            AppAssets.empty,
-            fit: BoxFit.fill,
-            height: size.height * .3.h,
-          ),
-        ],
+      child: Padding(
+        padding: AppConsts.paddingH50,
+        child: AspectRatio(
+          aspectRatio: AppConsts.aspect13on9,
+          child: SvgPicture.asset(AppAssets.empty, fit: BoxFit.fill),
+        ),
       ),
     );
   }
