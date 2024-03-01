@@ -24,7 +24,9 @@
 Flutter<br>
 Firebase<br>
 ## key Features
-State management: Getx,Mvvm,repository patterns.<br>
+State management: Getx.<br>
+Architecture Pattern : MVVM <br>
+Design Pattern : repository patterns<br>
 Backend: Firebase.<br>
 simple Local database: shared prefernces.<br> 
 
