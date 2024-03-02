@@ -46,4 +46,4 @@ Geo-Location : The app can leverage location services to provide users with info
 Languages: Arabic , English
 
 ## Setup
-install all packages by flutter pub get and add images in assets folder in your pc/laptop.
+install all packages by flutter pub get.
